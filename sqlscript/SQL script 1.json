@@ -2,12 +2,12 @@
 	"name": "SQL script 1",
 	"properties": {
 		"content": {
-			"query": "SELECT\n    TransactionDate, ProductId,\n        CAST(SUM(ProfitAmount) AS decimal(18,2)) AS [(sum) Profit],\n        CAST(AVG(ProfitAmount) AS decimal(18,2)) AS [(avg) Profit],\n        SUM(Quantity) AS [(sum) Quantity]\nFROM\n    OPENROWSET(\n        BULK 'https://2343243.dfs.core.windows.net/4324233/*.parquet',\n        FORMAT='PARQUET'\n) AS [r] GROUP BY r.TransactionDate, r.ProductId;",
+			"query": "ALTER DATABASE CURRENT COLLATE Latin1_General_100_CI_AS_SC_UTF8;",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "calabdb",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
