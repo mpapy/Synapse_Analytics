@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW CustomerInfo AS\n    SELECT * \nFROM OPENROWSET(\n        BULK 'https://2343243.dfs.core.windows.net/4324233/customerinfo.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION='2.0',\n        FIRSTROW=2\n    )\nWITH (\n    [UserName] VARCHAR (50),\n    [Gender] VARCHAR (10),\n    [Phone] VARCHAR (50),\n    [Email] VARCHAR (100),\n    [CreditCard] VARCHAR (50)\n) AS [r];\n\nSELECT * FROM CustomerInfo;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "calabdb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
